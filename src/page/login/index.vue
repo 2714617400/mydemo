@@ -11,6 +11,6 @@
 .login-bg{
     width: 100%;
     height: 100%;
-    background: url('../../assets/image/anheiBG.jpg') no-repeat;
+    background: url('../../assets/image/dark.jpg') no-repeat;
 }
 </style>
