@@ -29,17 +29,47 @@ export default {
             checked: false
         }
     },
+    created() {
+        if(localStorage.getItem('mychecked')) {
+            this.username = localStorage.getItem('myname')
+            this.password = localStorage.getItem('mypassword')
+            this.checked = true
+        }
+    },
     methods: {
         submit() {
-            const loading = this.$loading({
-                lock: true,
-                text: 'Loading',
-                spinner: 'el-icon-loading',
-                background: 'rgba(0, 0, 0, 0.7)'
+            let that = this
+            this.$http.get(`/login.php?username=${this.username}&password=${this.password}`).then(function (response) {
+                console.log(response);
+                that.$message({
+                    message: response.data,
+                    type: 'success'
+                })
+                console.log(response.data)
+                that.$router.push({
+                name: 'home'
+                })
+            }).catch(function (error) {
+                console.log(error);
+                that.$message.error('登录失败');
             });
-            setTimeout(() => {
-                loading.close();
-            }, 2000); 
+            // if (this.username === 'admin' && this.password === '123456') {
+            //     this.$message({
+            //     message: '登录成功!',
+            //     type: 'success'
+            //     });
+            // } else {
+            //     this.$message.error('登录失败');
+            // }
+            if (this.checked) {
+                localStorage.setItem('myname',this.username)
+                localStorage.setItem('mypassword',this.password)
+                localStorage.setItem('mychecked',this.checked)
+            } else {
+                localStorage.setItem('myname','')
+                localStorage.setItem('mypassword','')
+                localStorage.setItem('mychecked','')
+            }
         }
     }
 }
@@ -47,11 +77,13 @@ export default {
 
 <style lang="less" scoped>
 .login{
+    width: 1200px;
+    margin: 0 auto;
     position: relative;
     .login-two{
         padding: 200px 0 0 0;
         .form{
-            width:15%;
+            width:20%;
             padding: 30px;
             margin: 0 auto;
             border-radius: 10px;
