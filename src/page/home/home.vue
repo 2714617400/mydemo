@@ -7,6 +7,13 @@
         <div class="content">
             <!-- <img :src="" alt='' /> -->
             <span>文字说明</span>
+            <form action="127.0.0.1:80/upload.php" method="post"
+            enctype="multipart/form-data">
+                <label for="file">Filename:</label>
+                <input type="file" name="file" id="file" /> 
+                <br />
+                <input type="submit" name="submit" value="Submit" />
+            </form>
         </div>
     </div>
 </template>

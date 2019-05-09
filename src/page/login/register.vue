@@ -18,6 +18,10 @@
                     <el-radio v-model="Gender" label="1">男</el-radio>
                     <el-radio v-model="Gender" label="2">女</el-radio>
                 </el-form-item>
+                <el-fprm-item>
+                    <img :src="imgurl" alt="img" />
+                    <input type="file" name="img" ref="inputer" class="upload" accept="image/*" @change="upload"/>
+                </el-fprm-item>
                 <el-form-item >
                     <el-button @click="goBack()">返回登录界面</el-button>
                     <el-button type="primary" @click="submit()">创建!</el-button>
@@ -35,7 +39,8 @@ export default{
             password: '',
             password2: '',
             Gender: '',
-            code: ''
+            code: '',
+            imgurl: ''
         }
     },
     methods: {
@@ -49,6 +54,40 @@ export default{
             this.$router.push({
               name: 'login'
             })
+        },
+        upload() {
+            let input = this.$refs.inputer
+            let imgbase = ''
+            console.log(input)
+            let file = input.files[0]
+            console.log(file)
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            console.log(reader)
+            // console.log(reader.result)
+            reader.onloadend = function() {
+                // console.log(this.result)
+                self.imgurl = this.result
+                imgbase = this.result
+                console.log(self.imgurl)
+            }
+            // this.imgurl = reader.result
+            // console.log(this.imgurl)
+
+            this.$http.post(`/upload.php`,imgbase).then(function (response) {
+                console.log(response);
+                that.$message({
+                    message: response.data,
+                    type: 'success'
+                })
+                console.log(response.data)
+                that.$router.push({
+                name: 'home'
+                })
+            }).catch(function (error) {
+                console.log(error);
+                that.$message.error('登录失败');
+            });
         }
     }
 }
@@ -65,6 +104,10 @@ export default{
             margin: 0 auto;
             border-radius: 10px;
             background: rgba(0, 0, 0, 0.5);
+
+            .upload{
+                margin: 0 auto 30px;
+            }
         }
     }
 }
