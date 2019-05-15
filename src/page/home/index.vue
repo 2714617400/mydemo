@@ -8,15 +8,15 @@
             class="el-menu-demo"
             mode="horizontal"
             @select="handleSelect"
-            background-color="#1d4772"
+            background-color="#000"
             text-color="#fff"
-            active-text-color="#FFFF00"
+            active-text-color="red"
             router="ture"
             >
                 <el-menu-item index="1" route="myhome">主页</el-menu-item>
                 <el-menu-item index="2" route="dynamic">动态</el-menu-item>
-                <el-menu-item index="3" route="messagebox">留言板</el-menu-item>
-                <el-menu-item index="4" route="config">设置</el-menu-item>
+                <!-- <el-menu-item index="3" route="messagebox">留言板</el-menu-item> -->
+                <!-- <el-menu-item index="4" route="config">设置</el-menu-item> -->
             </el-menu>
         </div>
 
@@ -45,7 +45,7 @@ export default{
     // top: 0px;
     // background-color: #ffffff;
     .BGimg{
-        background: url("../../assets/image/huise.jpg") no-repeat;
+        background: url("../../assets/image/cnBG.jpg") no-repeat;
         width: 100%;
         height: 100%;
         position: fixed;
