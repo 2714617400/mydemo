@@ -40,6 +40,10 @@ export default {
         submit() {
             let that = this
             this.$http.get(`/login.php?username=${this.username}&password=${this.password}`).then(function (response) {
+                if (response.data === '登录失败') {
+                    that.$message.error('登录失败')
+                    return
+                }
                 console.log(response);
                 that.$message({
                     message: response.data,
@@ -51,7 +55,7 @@ export default {
                 })
             }).catch(function (error) {
                 console.log(error);
-                that.$message.error('登录失败');
+                that.$message.error('登录失败')
             });
             // if (this.username === 'admin' && this.password === '123456') {
             //     this.$message({

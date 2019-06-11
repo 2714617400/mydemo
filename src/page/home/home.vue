@@ -5,15 +5,7 @@
             <p>welcome my home!</p>
         </div>
         <div class="content">
-            <!-- <img :src="" alt='' /> -->
-            <span>文字说明</span>
-            <form action="127.0.0.1:80/upload.php" method="post"
-            enctype="multipart/form-data">
-                <label for="file">Filename:</label>
-                <input type="file" name="file" id="file" /> 
-                <br />
-                <input type="submit" name="submit" value="Submit" />
-            </form>
+            <!-- <img src="../../assets/image/cnBG.jpg" /> -->
         </div>
     </div>
 </template>
@@ -38,4 +30,13 @@ export default{
 
 //     }
 // }
+.content{
+    background: #fff;
+    width: 90%;
+    height: 50px;
+    margin: 50px auto 20px;
+    img{
+        width: 100%;
+    }
+}
 </style>
