@@ -39,32 +39,32 @@ export default {
     methods: {
         submit() {
             let that = this
-            this.$http.get(`/login.php?username=${this.username}&password=${this.password}`).then(function (response) {
-                if (response.data === '登录失败') {
-                    that.$message.error('登录失败')
-                    return
-                }
-                console.log(response);
-                that.$message({
-                    message: response.data,
-                    type: 'success'
-                })
-                console.log(response.data)
-                that.$router.push({
-                name: 'home'
-                })
-            }).catch(function (error) {
-                console.log(error);
-                that.$message.error('登录失败')
-            });
-            // if (this.username === 'admin' && this.password === '123456') {
-            //     this.$message({
-            //     message: '登录成功!',
-            //     type: 'success'
-            //     });
-            // } else {
-            //     this.$message.error('登录失败');
-            // }
+            // this.$http.get(`/login.php?username=${this.username}&password=${this.password}`).then(function (response) {
+            //     if (response.data === '登录失败') {
+            //         that.$message.error('登录失败')
+            //         return
+            //     }
+            //     console.log(response);
+            //     that.$message({
+            //         message: response.data,
+            //         type: 'success'
+            //     })
+            //     console.log(response.data)
+            //     that.$router.push({
+            //     name: 'home'
+            //     })
+            // }).catch(function (error) {
+            //     console.log(error);
+            //     that.$message.error('登录失败')
+            // });
+            if (this.username === 'admin' && this.password === '123456') {
+                this.$message({
+                message: '登录成功!',
+                type: 'success'
+                });
+            } else {
+                this.$message.error('登录失败');
+            }
             if (this.checked) {
                 localStorage.setItem('myname',this.username)
                 localStorage.setItem('mypassword',this.password)
@@ -74,6 +74,9 @@ export default {
                 localStorage.setItem('mypassword','')
                 localStorage.setItem('mychecked','')
             }
+            this.$router.push({
+                name: 'home'
+            })
         }
     }
 }

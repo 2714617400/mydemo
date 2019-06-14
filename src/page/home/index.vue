@@ -3,15 +3,14 @@
         <div class="BGimg">
         </div>
         <div class="nav">
-            <el-menu 
-            :default-active="activeIndex"
+            <el-menu
             class="el-menu-demo"
             mode="horizontal"
             @select="handleSelect"
-            background-color="#000"
-            text-color="#fff"
-            active-text-color="red"
             router="ture"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b"
             >
                 <el-menu-item index="1" route="myhome">主页</el-menu-item>
                 <el-menu-item index="2" route="dynamic">动态</el-menu-item>
@@ -45,7 +44,7 @@ export default{
     // top: 0px;
     // background-color: #ffffff;
     .BGimg{
-        background: url("../../assets/image/cnBG.jpg") no-repeat;
+        background: url("../../assets/image/anheiBG.jpg") no-repeat;
         width: 100%;
         height: 100%;
         position: fixed;

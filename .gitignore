@@ -15,3 +15,5 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
+src/assets/voice/01.mp3
+src/assets/voice/02.mp3
