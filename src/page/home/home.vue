@@ -1,9 +1,9 @@
 <template>
-    <div class="myhome homePage">
-        <div class="content">
+    <div class="myhome">
+        <div class="hover-box-shadow">
             <!-- <img src="../../assets/image/cnBG.jpg" /> -->
             <audio controls="controls">
-                 <source src="../../assets/voice/02.mp3" type="audio/mpeg">
+                 <!-- <source src="../../assets/voice/02.mp3" type="audio/mpeg"> -->
             </audio>
             <el-container>
                 <el-header>天依姑娘</el-header>
@@ -44,7 +44,7 @@ export default{
 <style lang="less" scoped>
 @import '../../../static/css/homepage.less';
 .content{
-    background: #fff;
+    // background: #fff;
     width: 90%;
     height: 50px;
     margin: 50px auto 20px;

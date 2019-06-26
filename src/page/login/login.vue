@@ -35,6 +35,7 @@ export default {
             this.password = localStorage.getItem('mypassword')
             this.checked = true
         }
+        this.$router.push({name: 'home'})
     },
     methods: {
         submit() {
