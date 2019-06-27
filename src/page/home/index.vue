@@ -2,25 +2,23 @@
     <div class="home">
         <div class="BGimg">
         </div>
-        <div class="nav">
-            <el-menu
-            class="el-menu-demo"
-            mode="horizontal"
-            @select="handleSelect"
-            router="ture"
-            background-color="#545c64"
-            text-color="#fff"
-            active-text-color="#ffd04b"
-            >
-                <el-menu-item index="1" route="myhome">主页</el-menu-item>
-                <el-menu-item index="2" route="dynamic">动态</el-menu-item>
-                <!-- <el-menu-item index="3" route="messagebox">留言板</el-menu-item> -->
-                <!-- <el-menu-item index="4" route="config">设置</el-menu-item> -->
-            </el-menu>
+        <div class="head-nav">
+            <ul>
+                <li v-for="item in navList">{{item}}</li>
+            </ul>
         </div>
-
         <div class="content">
             <!-- <router-view></router-view> -->
+            <div class="content-right">
+                <div class="user-info hover-box-shadow">
+                    <img src="../../assets/image/bg-cat.jpg" />
+                </div>
+                <div class="recommend hover-box-shadow">
+                    <ul>
+                        <li v-for="reco in Recommend">{{reco}}</li>
+                    </ul>
+                </div>
+            </div>
             <div class="content-area hover-box-shadow" v-for="(item, key) in content" :key="key">
                 <h1>{{item.title}}</h1>
                 <ul class="list-label">
@@ -30,9 +28,9 @@
                 <span>{{item.describe}}</span>
                 <img :src="item.image" v-if="item.image" />
             </div>
-            <div class="content-right hover-box-shadow">
-
-            </div>
+        </div>
+        <div class="foot">
+            <p>这是底部</p>
         </div>
     </div>
 </template>
@@ -42,6 +40,8 @@ export default{
     data() {
         return {
             activeIndex: '1',
+            navList: ['主页', '图片', '设置'],
+            Recommend: ['动漫', '妖精的尾巴', 'JOJO的奇妙冒险', '平成废物'],
             content: [
                 {
                     title: '震惊！草帽王已成为海贼王',
@@ -80,20 +80,40 @@ export default{
         background-position: center center;
         // background-size: 125% 125%;
     }
-    .nav{
-        display: inline-block;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+    .head-nav{
+        padding: 10px;
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 1px 2px 2px rgba(37, 37, 37, 0.2);
         z-index: 99;
+        display: flex;
+        align-items: center; /*定义body的元素垂直居中*/
+        justify-content: center;
+        background:  rgba(221, 221, 221, 1);
+        ul{
+            list-style-type: none;
+            overflow: hidden;
+            li{
+                float: left;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+        }
     }
     .content{
         width: 1200px;
         min-height: 600px;
-        margin: 50px auto 0;
+        margin: 150px auto 0;
         // overflow: hidden;
         // border: 1px red solid;
+    }
+    .foot{
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        text-align: center;
     }
     .content-area{
         width: 70%;
@@ -114,8 +134,38 @@ export default{
     }
     .content-right{
         width: 25%;
-        margin: 0 0 10px 0;
         float: right;
+        // overflow: hidden;
+        &>div{
+            margin: 0 0 10px 0;
+        }
+        .user-info{
+            // margin: 0 0 10px 0;
+            img{
+                width: 100%;
+            }
+        }
+        .recommend{
+            ul{
+                list-style-type: none;
+                padding: 10px 0 10px 0;
+                text-align: left;
+                li{
+                    padding: 0px 5px;
+                    margin-bottom: 5px;
+                    border-color: rgba(0, 179, 60, 0.829);
+                    border-style: solid;
+                    border-width: 0px;
+                    transition: border-left-width .2s;
+                    -moz-transition: border-left-width .2s;	/* Firefox 4 */
+                    -webkit-transition: border-left-width .2s;	/* Safari 和 Chrome */
+                    -o-transition: border-left-width .2s;	/* Opera */
+                    &:hover{
+                        border-left-width: 3px;
+                    }
+                }
+            }
+        }
     }
 }
 </style>
