@@ -2,32 +2,37 @@
     <div class="home">
         <div class="BGimg">
         </div>
-        <div class="head-nav">
+        <!-- <div class="head-nav">
             <ul>
                 <li v-for="item in navList">{{item}}</li>
             </ul>
-        </div>
+        </div> -->
+        <navmenu></navmenu>
         <div class="content">
             <!-- <router-view></router-view> -->
+            <!--用户信息开始-->
             <div class="content-right">
                 <div class="user-info hover-box-shadow">
                     <img src="../../assets/image/bg-cat.jpg" />
                 </div>
                 <div class="recommend hover-box-shadow">
-                    <ul>
+                    <ul class="label-type">
                         <li v-for="reco in Recommend">{{reco}}</li>
                     </ul>
                 </div>
             </div>
+            <!--用户信息结束-->
+            <!--内容区开始-->
             <div class="content-area hover-box-shadow" v-for="(item, key) in content" :key="key">
                 <h1>{{item.title}}</h1>
-                <ul class="list-label">
+                <ul class="list-label label-type">
                     <li v-for="child in item.label">#{{child}}</li>
                 </ul>
-                <h2>简介</h2>
+                <h2 @click="clickdiv()">简介</h2>
                 <span>{{item.describe}}</span>
                 <img :src="item.image" v-if="item.image" />
             </div>
+            <!--内容区结束-->
         </div>
         <div class="foot">
             <p>这是底部</p>
@@ -36,6 +41,7 @@
 </template>
 
 <script>
+import navmenu from '@/components/Nav_Menu'
 export default{
     data() {
         return {
@@ -44,18 +50,26 @@ export default{
             Recommend: ['动漫', '妖精的尾巴', 'JOJO的奇妙冒险', '平成废物'],
             content: [
                 {
-                    title: '震惊！草帽王已成为海贼王',
-                    label: ['动漫', '海贼王', '路飞', '热血'],
-                    describe: '好了，你明天来uc震惊部上班吧！',
+                    title: '美好的一天',
+                    label: ['早晨', '清晨阳光', '禅'],
+                    describe: '美好的一天从这里开始',
                     image: ''
                 },
                 {
-                    title: '鸣人成为第六代火影',
-                    label: ['动漫', '火影忍者', '漩涡鸣人', '感动', '忍者'],
-                    describe: '为实现梦想，和守护伙伴们的羁绊，鸣人不断修炼变强，作为木叶“三忍”之一自来也的弟子，在追求梦想的过程中不断突破自我，贯彻了自身的忍道，获得人们的认可。最后与忍者联军以及宇智波佐助还有九尾一同终结了战争，为忍者世界带来和平，并实现自己成为火影（七代目火影）和忍界英雄的梦想。',
+                    title: '塔罗会降临',
+                    label: ['乌贼', '诡秘之主', '克罗恩', '愚者', '正义'],
+                    describe: '......',
                     image: ''
                 }
             ]
+        }
+    },
+    components: {
+        navmenu
+    },
+    methods: {
+        clickdiv () {
+            console.log('hi')
         }
     }
 }
@@ -66,6 +80,7 @@ export default{
 .home{
     width: 100%;
     height: 100%;
+    overflow: hidden;
     .BGimg{
         background: url("../../assets/image/bg-cat.jpg") no-repeat;
         background: rgba(221, 221, 221, 0.5);
@@ -120,15 +135,20 @@ export default{
         margin:  0 0 30px 0;
         float: left;
         text-align: left;
+        h1{
+            line-height: 2.2em;
+        }
+        h2{
+            line-height: 2em;
+        }
+        span{
+            line-height: 1.5em;
+        }
         .list-label{
-            list-style-type: none;
             &>li{
                 display: inline-block;
-                border-radius: 3px;
                 padding: 5px;
                 margin: 0 5px 0 5px;
-                border-left: 3px rgba(0, 179, 60, 0.829) solid;
-                background: rgba(0, 107, 14, 0.2);
             }
         }
     }
@@ -147,14 +167,11 @@ export default{
         }
         .recommend{
             ul{
-                list-style-type: none;
                 padding: 10px 0 10px 0;
                 text-align: left;
                 li{
                     padding: 0px 5px;
                     margin-bottom: 5px;
-                    border-color: rgba(0, 179, 60, 0.829);
-                    border-style: solid;
                     border-width: 0px;
                     transition: border-left-width .2s;
                     -moz-transition: border-left-width .2s;	/* Firefox 4 */

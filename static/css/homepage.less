@@ -1,4 +1,6 @@
-.homePage{
+@label-color: rgba(0, 107, 14, 0.2);
+@label-border-color: rgba(0, 179, 60, 0.829);
+.homePage {
     min-height: 1200px;
     background: rgba(0, 0, 0, 0.5);
     background: url('../../src/assets/image/animal-canine-cute-2376996.jpg');
@@ -24,6 +26,19 @@
     -o-transition: box-shadow .3s;	/* Opera */
     &:hover {
         box-shadow: 0 5px 15px 3px  rgba(37, 37, 37, 0.4);
+    }
+}
+.label-type {
+    list-style-type: none;
+    li {
+        border-color:@label-border-color;
+        background: @label-color;
+        border-style: solid;
+        border-width: 0px;
+        // display: inline-block;
+        border-radius: 3px;
+        padding: 5px;
+        margin: 0 5px 0 5px;
     }
 }
 // .hover-box-shadow :hover{
