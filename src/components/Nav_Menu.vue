@@ -12,12 +12,17 @@
 <script>
 export default{
     mounted() {
-        console.log(this.$refs.ul.children.length)
+        console.log(this.$refs.ul.lastChild.offsetLeft)
         var divele = this.$refs.ul.lastChild
+        console.log(divele.getBoundingClientRect(), 'divele')
+        console.log(divele.offsetWidth, divele.scrollLeft)
+        // this.$refs.drop.style.backgroundColor="#ff0000"
+        // console.log(this.$refs.drop, 'divele')
         for (let i = 0; i < this.$refs.ul.children.length; i++) {
-            this.$refs.ul.children[i].onclick = function (divele) {
-                console.log(divele)
+            this.$refs.ul.children[i].onclick = function () {
+                // console.log(divele)
             }
+            console.log(this.$refs.ul.children[i].offsetLeft)
         }
         // this.$refs.ul.children.
     }
@@ -34,6 +39,8 @@ export default{
        display: inline-block;
        list-style-type: none;
        position: relative;
+       top: 0;
+       left: 0;
        li{
            display: inline-block;
            padding: 10px 20px;
