@@ -34,14 +34,13 @@
             </div>
             <!--内容区结束-->
         </div>
-        <div class="foot">
-            <p>这是底部</p>
-        </div>
+        <foot></foot>
     </div>
 </template>
 
 <script>
 import navmenu from '@/components/Nav_Menu'
+import foot from '@/components/foot'
 export default{
     data() {
         return {
@@ -65,7 +64,8 @@ export default{
         }
     },
     components: {
-        navmenu
+        navmenu,
+        foot
     },
     methods: {
         clickdiv () {

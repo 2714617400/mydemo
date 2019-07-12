@@ -1,10 +1,9 @@
 <template>
 <div class="nav">
     <ul ref="ul">
-        <li>nihao</li>
-        <li>鸟</li>
-        <li>尼奥</li>
-        <div class="sign"></div>
+        <li>主页</li>
+        <li>留言板</li>
+        <li>设置</li>
     </ul>
 </div>
 </template>
@@ -12,19 +11,6 @@
 <script>
 export default{
     mounted() {
-        console.log(this.$refs.ul.lastChild.offsetLeft)
-        var divele = this.$refs.ul.lastChild
-        console.log(divele.getBoundingClientRect(), 'divele')
-        console.log(divele.offsetWidth, divele.scrollLeft)
-        // this.$refs.drop.style.backgroundColor="#ff0000"
-        // console.log(this.$refs.drop, 'divele')
-        for (let i = 0; i < this.$refs.ul.children.length; i++) {
-            this.$refs.ul.children[i].onclick = function () {
-                // console.log(divele)
-            }
-            console.log(this.$refs.ul.children[i].offsetLeft)
-        }
-        // this.$refs.ul.children.
     }
 }
 </script>
@@ -47,12 +33,6 @@ export default{
            &:hover{
                background:  rgba(233, 144, 29, 0.5);
            }
-       }
-       .sign{
-           border: 1px green solid;
-           position: absolute;
-           bottom: 0;
-           left: 0;
        }
    }
 }
