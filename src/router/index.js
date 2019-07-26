@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
 import loginPage from '@/page/login'
 import login from '@/page/login/login'
@@ -8,12 +7,7 @@ import register from '@/page/login/register'
 
 import home from '@/page/home'
 import myhome from '@/page/home/home'
-
-import dynamic from '@/page/dynamic'
-
-import messagebox from '@/page/messagebox'
-
-import config from '@/page/config'
+import homedetails from '@/page/home/homedetails'
 
 Vue.use(Router)
 
@@ -40,7 +34,7 @@ export default new Router({
       path: '/home',
       name: 'home',
       component: home,
-      redirect: 'home/myhome',
+      redirect: 'home/homedetails',
       children: [
         {
           path: 'myhome',
@@ -48,19 +42,9 @@ export default new Router({
           component: myhome
         },
         {
-          path: 'dynamic',
-          name: 'dynamic',
-          component: dynamic
-        },
-        {
-          path: 'messagebox',
-          name: 'messagebox',
-          component: messagebox
-        },
-        {
-          path: 'config',
-          name: 'config',
-          component: config
+          path: 'homedetails',
+          name: 'homedetails',
+          component: homedetails
         }
       ]
     }

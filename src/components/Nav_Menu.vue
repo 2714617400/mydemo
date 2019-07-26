@@ -1,15 +1,16 @@
 <template>
 <div class="nav">
     <ul ref="ul">
-        <li>主页</li>
-        <li>留言板</li>
-        <li>设置</li>
+        <li v-for="item in list">{{item}}</li>
     </ul>
 </div>
 </template>
 
 <script>
 export default{
+    props: {
+        list: Array
+    },
     mounted() {
     }
 }

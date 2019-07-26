@@ -2,14 +2,9 @@
     <div class="home">
         <div class="BGimg">
         </div>
-        <!-- <div class="head-nav">
-            <ul>
-                <li v-for="item in navList">{{item}}</li>
-            </ul>
-        </div> -->
-        <navmenu></navmenu>
+        <navmenu :list="navList"></navmenu>
         <div class="content">
-            <!-- <router-view></router-view> -->
+            <router-view></router-view>
             <!--用户信息开始-->
             <div class="content-right">
                 <div class="user-info hover-box-shadow">
@@ -23,12 +18,12 @@
             </div>
             <!--用户信息结束-->
             <!--内容区开始-->
-            <div class="content-area hover-box-shadow" v-for="(item, key) in content" :key="key">
+            <div class="content-area hover-box-shadow" v-for="(item, key) in content" :key="key" @click="toContent(item)">
                 <h1>{{item.title}}</h1>
                 <ul class="list-label label-type">
                     <li v-for="child in item.label">#{{child}}</li>
                 </ul>
-                <h2 @click="clickdiv()">简介</h2>
+                <h2>简介</h2>
                 <span>{{item.describe}}</span>
                 <img :src="item.image" v-if="item.image" />
             </div>
@@ -45,7 +40,7 @@ export default{
     data() {
         return {
             activeIndex: '1',
-            navList: ['主页', '图片', '设置'],
+            navList: ['主页', '照片', '设置'],
             Recommend: ['动漫', '妖精的尾巴', 'JOJO的奇妙冒险', '平成废物'],
             content: [
                 {
@@ -68,8 +63,12 @@ export default{
         foot
     },
     methods: {
-        clickdiv () {
-            console.log('hi')
+        toContent (val) {
+            console.log(val)
+            // this.$router.push({name: 'details'})
+            this.$router.push({
+                name: 'login'
+            })
         }
     }
 }
